@@ -22,6 +22,7 @@ package org.wahlzeit.model;
 
 import java.sql.*;
 
+import org.wahlzeit.model.food.FoodPhoto;
 import org.wahlzeit.services.*;
 
 /**
@@ -78,21 +79,21 @@ public class PhotoFactory {
 	 * @methodtype factory
 	 */
 	public Photo createPhoto() {
-		return new Photo();
+		return new FoodPhoto();
 	}
 	
 	/**
 	 * 
 	 */
 	public Photo createPhoto(PhotoId id) {
-		return new Photo(id);
+		return new FoodPhoto(id);
 	}
 	
 	/**
 	 * 
 	 */
 	public Photo createPhoto(ResultSet rs) throws SQLException {
-		return new Photo(rs);
+		return new FoodPhoto(rs);
 	}
 	
 	/**
