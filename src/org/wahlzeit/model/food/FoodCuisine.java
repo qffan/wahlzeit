@@ -3,15 +3,15 @@ package org.wahlzeit.model.food;
 import org.wahlzeit.utils.EnumValue;
 
 public enum FoodCuisine  implements EnumValue {
-	LU(0, "lu", "shangdong", "xianxian"),
-	SU(1, "su", "jiangsu", "tian"),
-	YUE(2, "yue", "liangguang", "xiandan"),
-	CHUAN(3, "chuang", "sichuan", "mala");
+	LU(0, "lu", "shangdong", "salty and fresh"),
+	SU(1, "su", "jiangsu", "sweet"),
+	YUE(2, "yue", "liangguang", "fresh and light"),
+	CHUAN(3, "chuang", "sichuan", "spicy and pungent");
 	
 	
 	
 	/**
-	 * All possible states of PhotoSize
+	 * The four main cuisine of chinese food.
 	 */
 	private static FoodCuisine[] allValues = {
 		LU, SU, YUE, CHUAN
@@ -25,11 +25,13 @@ public enum FoodCuisine  implements EnumValue {
 	
 	
 	private FoodCuisine(int myValue,String name, String province, String taste){
+	
 		this.value = myValue;
 		this.name= name;
 		this.province = province;
 		this.taste = taste;
 	}
+	
 	/**
 	 * 
 	 */
