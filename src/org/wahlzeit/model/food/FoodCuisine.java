@@ -52,7 +52,7 @@ public enum FoodCuisine  implements EnumValue {
 	/**
 	 * 
 	 */
-	public static FoodCuisine getFromNmae(String myCuisine) throws IllegalArgumentException {
+	public static FoodCuisine getFromName(String myCuisine) throws IllegalArgumentException {
 		for( FoodCuisine cuisine: FoodCuisine.values() ){
 			if( cuisine.name.equals(myCuisine) ) {
 				return cuisine;

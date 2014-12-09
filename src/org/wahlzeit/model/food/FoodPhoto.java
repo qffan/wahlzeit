@@ -8,6 +8,10 @@ import org.wahlzeit.model.PhotoId;
 
 public class FoodPhoto extends Photo {
 	
+	public static final String CUISINE = "cuisine";
+	public static final String TASTE = "taste";
+	public static final String IS_VEGETABLE = "isVegetable";
+	
 	public FoodPhoto(){
 		super();
 	}
@@ -77,13 +81,16 @@ public class FoodPhoto extends Photo {
 	 */
 	public void readFrom(ResultSet rset) throws SQLException {
 	 super.readFrom(rset);
-	 //todo
-	 
+	 this.isVegetable = rset.getBoolean("is_vegetable");
+	 this.foodCuisine = FoodCuisine.getFromName(rset.getString("cuisine"));
+	 this.foodTaste = FoodTaste.getFromName(rset.getString("taste"));	 
 	}
 	
 	public void writeOn(ResultSet rset) throws SQLException {
 		super.writeOn(rset);
-		//todo
+		rset.updateBoolean("is_vegetable", this.isVegetable);
+		rset.updateString("cuisine", this.foodCuisine.asString());
+		rset.updateString("taste", this.foodTaste.asString());
 	}
 	
 

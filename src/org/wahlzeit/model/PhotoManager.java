@@ -25,6 +25,7 @@ import java.sql.*;
 import java.util.*;
 
 import org.wahlzeit.main.*;
+import org.wahlzeit.model.food.FoodPhotoFactory;
 import org.wahlzeit.services.*;
 
 /**
@@ -53,7 +54,7 @@ public class PhotoManager extends ObjectManager {
 	/**
 	 * 
 	 */
-	public static final PhotoManager getInstance() {
+	public static PhotoManager getInstance() {
 		return instance;
 	}
 	
@@ -89,7 +90,7 @@ public class PhotoManager extends ObjectManager {
 	 * 
 	 */
 	public PhotoManager() {
-		photoTagCollector = PhotoFactory.getInstance().createPhotoTagCollector();
+		photoTagCollector = FoodPhotoFactory.getInstance().createPhotoTagCollector();
 	}
 	
 	/**
@@ -137,7 +138,7 @@ public class PhotoManager extends ObjectManager {
 	 * 
 	 */
 	protected Photo createObject(ResultSet rset) throws SQLException {
-		return PhotoFactory.getInstance().createPhoto(rset);
+		return FoodPhotoFactory.getInstance().createPhoto(rset);
 	}
 	
 	/**

@@ -54,7 +54,7 @@ public abstract class DataObject implements Persistent {
 	}
 	
 	/**
-	 * 
+	 * flag if the data is changed.
 	 */
 	public final void incWriteCount() {
 		writeCount++;

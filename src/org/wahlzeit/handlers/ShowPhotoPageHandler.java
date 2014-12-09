@@ -23,6 +23,7 @@ package org.wahlzeit.handlers;
 import java.util.*;
 
 import org.wahlzeit.model.*;
+import org.wahlzeit.model.food.FoodPhoto;
 import org.wahlzeit.services.*;
 import org.wahlzeit.utils.*;
 import org.wahlzeit.webparts.*;
@@ -163,7 +164,17 @@ public class ShowPhotoPageHandler extends AbstractWebPageHandler implements WebF
 			
 		WebPart caption = createWebPart(us, PartUtil.CAPTION_INFO_FILE);
 		caption.addString(Photo.CAPTION, getPhotoCaption(us, photo));
+		if( photo instanceof FoodPhoto){			
+			FoodPhoto foodPhoto = (FoodPhoto)photo;
+			caption.addString(FoodPhoto.CUISINE, foodPhoto.getFoodCuisine() != null?  foodPhoto.getFoodCuisine().asString(): "" );
+			caption.addString(FoodPhoto.TASTE, foodPhoto.getFoodTaste() != null?  foodPhoto.getFoodTaste().asString(): "" );
+			caption.addString(FoodPhoto.IS_VEGETABLE, foodPhoto.isVegetable()==true? "True":"False");
+		}
 		page.addWritable(Photo.CAPTION, caption);
+		
+	
+		
+		
 	}
 
 	/**

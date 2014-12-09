@@ -23,6 +23,7 @@ package org.wahlzeit.handlers;
 import java.util.*;
 
 import org.wahlzeit.model.*;
+import org.wahlzeit.model.food.FoodPhoto;
 import org.wahlzeit.services.*;
 import org.wahlzeit.utils.*;
 import org.wahlzeit.webparts.*;
@@ -55,6 +56,13 @@ public class ShowUserPhotoFormHandler extends AbstractWebFormHandler {
 		String tags = photo.getTags().asString();
 		tags = !StringUtil.isNullOrEmptyString(tags) ? tags : us.cfg().getNoTags();
 		part.maskAndAddString(Photo.TAGS, tags);
+		
+		if( photo instanceof FoodPhoto){			
+			FoodPhoto foodPhoto = (FoodPhoto)photo;
+			part.addString(FoodPhoto.CUISINE, foodPhoto.getFoodCuisine() != null?  foodPhoto.getFoodCuisine().asString(): "" );
+			part.addString(FoodPhoto.TASTE, foodPhoto.getFoodTaste() != null?  foodPhoto.getFoodTaste().asString(): "" );
+			part.addString(FoodPhoto.IS_VEGETABLE, foodPhoto.isVegetable()==true? "True":"False");
+		}
 		
 		String photoStatus = us.cfg().asValueString(photo.getStatus());
 		part.addString(Photo.STATUS, photoStatus);

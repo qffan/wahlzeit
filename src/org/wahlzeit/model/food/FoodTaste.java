@@ -45,7 +45,7 @@ public enum FoodTaste implements EnumValue {
 	/**
 	 * 
 	 */
-	public static FoodTaste getFromNmae(String mytaste) throws IllegalArgumentException {
+	public static FoodTaste getFromName(String mytaste) throws IllegalArgumentException {
 		for( FoodTaste taste: FoodTaste.values() ){
 			if( taste.name.equals(mytaste) ) {
 				return taste;

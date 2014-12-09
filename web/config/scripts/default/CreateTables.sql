@@ -29,7 +29,10 @@ CREATE TABLE photos (
 	status integer,
 	praise_sum integer,
 	no_votes integer,
-	creation_time bigint
+	creation_time bigint,
+	is_vegetable boolean,
+	cuisine text,
+	taste text
 );
 
 CREATE TABLE tags (

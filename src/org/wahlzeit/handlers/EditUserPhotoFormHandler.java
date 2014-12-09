@@ -23,6 +23,9 @@ package org.wahlzeit.handlers;
 import java.util.*;
 
 import org.wahlzeit.model.*;
+import org.wahlzeit.model.food.FoodCuisine;
+import org.wahlzeit.model.food.FoodPhoto;
+import org.wahlzeit.model.food.FoodTaste;
 import org.wahlzeit.utils.*;
 import org.wahlzeit.webparts.*;
 
@@ -63,6 +66,51 @@ public class EditUserPhotoFormHandler extends AbstractWebFormHandler {
 		part.addString(Photo.PRAISE, photo.getPraiseAsString(us.cfg()));
 		part.maskAndAddString(Photo.TAGS, photo.getTags().asString());
 		
+		if( photo instanceof FoodPhoto){
+			
+			FoodPhoto foodPhoto = (FoodPhoto)photo;
+			
+			String cuisines = "";
+			FoodCuisine  myCuisine= foodPhoto.getFoodCuisine();
+			for (FoodCuisine t : FoodCuisine.values())
+			{
+				if (myCuisine != null && myCuisine.equals(t))
+					cuisines += "<option selected=\"true\">";
+				else
+					cuisines += "<option>";
+				
+				cuisines += t.asString();
+				cuisines += "</option>";
+			}
+			part.addString(FoodPhoto.CUISINE, cuisines);
+			
+			String tastes ="";
+			FoodTaste  myTaste= foodPhoto.getFoodTaste();
+			for (FoodTaste t : FoodTaste.values())
+			{
+				if (myTaste != null && myTaste.equals(t))
+					tastes += "<option selected=\"true\">";
+				else
+					tastes += "<option>";
+				
+				tastes += t.asString();
+				tastes += "</option>";
+			}
+			part.addString(FoodPhoto.TASTE, tastes);
+			
+			String isVegatables ="";
+			boolean  myVeg= foodPhoto.isVegetable();
+			if( myVeg) {
+				isVegatables += "<option selected=\"true\">True</option>";	
+				isVegatables += "<option>False</option>";
+			} else {
+				isVegatables += "<option>True</option>";	
+				isVegatables += "<option selected=\"true\">False</option>";				
+			}			
+			
+			part.addString(FoodPhoto.IS_VEGETABLE, isVegatables);
+		}
+		
 		part.addString(Photo.IS_INVISIBLE, HtmlUtil.asCheckboxCheck(photo.getStatus().isInvisible()));
 		part.addString(Photo.STATUS, us.cfg().asValueString(photo.getStatus()));
 		part.addString(Photo.UPLOADED_ON, us.cfg().asDateString(photo.getCreationTime()));	
@@ -87,6 +135,22 @@ public class EditUserPhotoFormHandler extends AbstractWebFormHandler {
 
 		String tags = us.getAndSaveAsString(args, Photo.TAGS);
 		photo.setTags(new Tags(tags));
+		
+		if( photo instanceof FoodPhoto){			
+			FoodPhoto foodPhoto = (FoodPhoto)photo;
+			String cuisine = us.getAndSaveAsString(args, FoodPhoto.CUISINE);
+			foodPhoto.setFoodCuisine(FoodCuisine.getFromName(cuisine));
+			
+			String taste = us.getAndSaveAsString(args, FoodPhoto.TASTE);
+			foodPhoto.setFoodTaste(FoodTaste.getFromName(taste));
+			
+			String veg = us.getAndSaveAsString(args, FoodPhoto.IS_VEGETABLE);
+			if( veg.equals("True")){
+				foodPhoto.setVegetable(true);
+			} else {
+				foodPhoto.setVegetable(false);
+			}			
+		}
 
 		String status = us.getAndSaveAsString(args, Photo.IS_INVISIBLE);
 		boolean isInvisible = (status != null) && status.equals("on");

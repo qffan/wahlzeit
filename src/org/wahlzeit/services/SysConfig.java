@@ -130,9 +130,16 @@ public class SysConfig extends AbstractConfig {
 		
 		// Database connection
 		doSetValue(SysConfig.DB_DRIVER, "org.postgresql.Driver");
+		
+		//* public deploy server
 		doSetValue(SysConfig.DB_CONNECTION, "jdbc:postgresql://localhost:5432/fan");
 		doSetValue(SysConfig.DB_USER, "fan");
-		doSetValue(SysConfig.DB_PASSWORD, "iZR3tju8oreE6gQk");
+		doSetValue(SysConfig.DB_PASSWORD, "iZR3tju8oreE6gQk");//*/
+		
+		/*local server
+		doSetValue(SysConfig.DB_CONNECTION, "jdbc:postgresql://localhost:5432/FoodGod");
+		doSetValue(SysConfig.DB_USER, "FoodGod");
+		doSetValue(SysConfig.DB_PASSWORD, "foodgod");//*/
 	}
 	
 	/**
