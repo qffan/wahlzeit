@@ -12,6 +12,8 @@ public class FoodPhoto extends Photo {
 	public static final String TASTE = "taste";
 	public static final String IS_VEGETABLE = "isVegetable";
 	
+	public static final String MAIN_MATERIAL = "mainMaterial";
+	
 	public FoodPhoto(){
 		super();
 	}
@@ -76,6 +78,17 @@ public class FoodPhoto extends Photo {
 	}
 	
 	
+	private FoodMaterial mainMaterial = null;
+	
+	
+	public FoodMaterial getMainMaterial() {
+		return mainMaterial;
+	}
+
+	public void setMainMaterial(FoodMaterial mainMaterial) {
+		this.mainMaterial = mainMaterial;
+	}
+
 	/**
 	 * 
 	 */
@@ -83,7 +96,8 @@ public class FoodPhoto extends Photo {
 	 super.readFrom(rset);
 	 this.isVegetable = rset.getBoolean("is_vegetable");
 	 this.foodCuisine = FoodCuisine.getFromName(rset.getString("cuisine"));
-	 this.foodTaste = FoodTaste.getFromName(rset.getString("taste"));	 
+	 this.foodTaste = FoodTaste.getFromName(rset.getString("taste"));
+	 this.mainMaterial = FoodMaterialManager.getInstance().createFoodMaterial(rset.getString("main_material"));
 	}
 	
 	public void writeOn(ResultSet rset) throws SQLException {
@@ -91,6 +105,8 @@ public class FoodPhoto extends Photo {
 		rset.updateBoolean("is_vegetable", this.isVegetable);
 		rset.updateString("cuisine", this.foodCuisine.asString());
 		rset.updateString("taste", this.foodTaste.asString());
+		
+		rset.updateString("main_material", this.mainMaterial.getName());
 	}
 	
 

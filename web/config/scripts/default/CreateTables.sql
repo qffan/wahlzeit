@@ -32,7 +32,8 @@ CREATE TABLE photos (
 	creation_time bigint,
 	is_vegetable boolean,
 	cuisine text,
-	taste text
+	taste text,
+	main_material text
 );
 
 CREATE TABLE tags (
