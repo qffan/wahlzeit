@@ -1,6 +1,14 @@
 package org.wahlzeit.model.food;
 
-
+/**
+ * 
+ * Collaboration:
+ * Type Object
+ * 
+ * Roles:
+ * object of type object pattern
+ * 
+ */
 public class FoodMaterial {
 	
 	private FoodMaterialType type;
@@ -16,6 +24,9 @@ public class FoodMaterial {
 		return type.getDescription();
 	}
 	
+	public FoodMaterialType getFoodMaterialType(){
+		return type;
+	}
 	
 
 }

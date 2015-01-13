@@ -33,8 +33,24 @@ import org.wahlzeit.services.*;
  * 
  * @author dirkriehle
  * 
+ * 
+ * Collaboration:
+ * Manager
+ * singleton
+ * Serializer 
+ * 
+ * Roles:
+ * Manager of Photo
+ * Initializer of self
+ * Serializer of Photo
+ * 
  */
+
+
 public class PhotoManager extends ObjectManager {
+	
+	//Collaboration:
+	//singleton
 	
 	/**
 	 * 
@@ -58,6 +74,8 @@ public class PhotoManager extends ObjectManager {
 		return instance;
 	}
 	
+	// Collaboration: 
+	// Manager
 	/**
 	 * 
 	 */
@@ -100,6 +118,10 @@ public class PhotoManager extends ObjectManager {
 	protected boolean doHasPhoto(PhotoId id) {
 		return photoCache.containsKey(id);
 	}
+	
+	
+	// Collaboration: 
+	// Serializer
 	
 	/**
 	 * 

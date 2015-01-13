@@ -1,6 +1,26 @@
 package org.wahlzeit.model.food;
 
+
+/**
+ * 
+ * Collaboration:
+ * Type Object
+ * 
+ * Roles:
+ * object type of type object pattern
+ * 
+ */
 public class FoodMaterialType {
+	
+	
+	
+	public boolean isInstance(FoodMaterial m){
+		assert( m !=null ) : "";
+		boolean result = m.getFoodMaterialType() == this;
+		//todo check super classes
+		return result;
+		
+	}
 	
 	public FoodMaterialType(FoodMaterialType parent, String name, String description){
 		this.parentType = parent;

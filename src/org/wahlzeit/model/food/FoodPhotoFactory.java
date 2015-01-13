@@ -7,8 +7,22 @@ import org.wahlzeit.model.PhotoFactory;
 import org.wahlzeit.model.PhotoId;
 import org.wahlzeit.services.SysLog;
 
+/**
+ * 
+ * Collaboration:
+ * Factory
+ * singleton
+ * 
+ * Roles:
+ * Factory of FoodPhoto
+ * Initializer of self
+ * 
+ */
 public class FoodPhotoFactory extends PhotoFactory {
 	
+	// Collaboration:
+	// singleton
+
 	/**
 	 * Hidden singleton instance; needs to be initialized from the outside.
 	 */
@@ -50,6 +64,10 @@ public class FoodPhotoFactory extends PhotoFactory {
 	protected FoodPhotoFactory() {
 		// do nothing
 	}
+	
+	// Collaboration:
+	// factory
+	
 
 	/**
 	 * @methodtype factory

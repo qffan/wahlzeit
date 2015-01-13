@@ -6,6 +6,12 @@ import java.sql.SQLException;
 import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoId;
 
+/**
+ * 
+ * Collaboration:
+ * Concrete Photo
+ * 
+ */
 public class FoodPhoto extends Photo {
 	
 	public static final String CUISINE = "cuisine";
@@ -106,7 +112,7 @@ public class FoodPhoto extends Photo {
 		rset.updateString("cuisine", this.foodCuisine.asString());
 		rset.updateString("taste", this.foodTaste.asString());
 		
-		rset.updateString("main_material", this.mainMaterial.getName());
+		rset.updateString("main_material", "" );//this.mainMaterial.getName());
 	}
 	
 

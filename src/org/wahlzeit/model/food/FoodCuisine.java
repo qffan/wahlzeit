@@ -2,6 +2,12 @@ package org.wahlzeit.model.food;
 
 import org.wahlzeit.utils.EnumValue;
 
+/**
+ * 
+ * Collaboration:
+ * Value Type FoodCuisine
+ * 
+ */
 public enum FoodCuisine  implements EnumValue {
 	LU(0, "lu", "shangdong", "salty and fresh"),
 	SU(1, "su", "jiangsu", "sweet"),

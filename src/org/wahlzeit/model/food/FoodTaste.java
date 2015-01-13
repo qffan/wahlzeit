@@ -2,6 +2,12 @@ package org.wahlzeit.model.food;
 
 import org.wahlzeit.utils.EnumValue;
 
+/**
+ * 
+ * Collaboration:
+ * Value Type FoodTaste
+ * 
+ */
 public enum FoodTaste implements EnumValue {
 	
 	SOUR(0, "sour"),

@@ -29,9 +29,20 @@ import org.wahlzeit.services.*;
  * 
  * @author dirkriehle
  *
+ * Collaboration:
+ * Factory
+ * singleton
+ * 
+ * Roles:
+ * Factory of Photo
+ * Initializer of self
+ * 
  */
 
 public class PhotoFactory {
+	
+	// Collaboration:
+	// singleton
 	
 	/**
 	 * Hidden singleton instance; needs to be initialized from the outside.
@@ -75,6 +86,9 @@ public class PhotoFactory {
 		// do nothing
 	}
 
+	// Collaboration:
+	// factory
+	
 	/**
 	 * @methodtype factory
 	 */

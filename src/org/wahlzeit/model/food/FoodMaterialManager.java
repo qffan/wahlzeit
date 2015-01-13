@@ -5,8 +5,23 @@ import java.util.List;
 
 import org.wahlzeit.services.SysLog;
 
+/**
+ * 
+ * Collaboration:
+ * Manager
+ * Factory
+ * singleton
+ * 
+ * Roles:
+ * Manager of FoodMaterialType
+ * Factory of FoodMaterial
+ * Initializer of self
+ * 
+ */
 public class FoodMaterialManager {
 	
+	// Collaboration:
+	// singleton
 	private FoodMaterialManager(){
 		loadMaterialType();
 	}
@@ -24,6 +39,8 @@ public class FoodMaterialManager {
 		return instance;
 	}
 	
+	// Collaboration:
+	// Manager
 	protected List<FoodMaterialType> types = new ArrayList<FoodMaterialType>();
 	
 	private void loadMaterialType(){
@@ -93,6 +110,8 @@ public class FoodMaterialManager {
 		return null;
 	}
 	
+	// Collaboration:
+	// Factory
 	public FoodMaterial createFoodMaterial(String name){
 		 FoodMaterialType mytype =  getFoodMaterialType (name);
 		 if(mytype != null){
