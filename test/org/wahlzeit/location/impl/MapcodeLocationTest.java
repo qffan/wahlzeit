@@ -2,6 +2,8 @@ package org.wahlzeit.location.impl;
 
 import java.util.List;
 
+import org.wahlzeit.location.LocationException;
+
 import com.mapcode.Mapcode;
 import com.mapcode.MapcodeCodec;
 import com.mapcode.Point;
@@ -30,7 +32,7 @@ public class MapcodeLocationTest extends TestCase {
 	}
 
 	public void testConstructor() throws UnknownTerritoryException,
-			UnknownMapcodeException {
+			UnknownMapcodeException, LocationException {
 		MapcodeLocation loc = new MapcodeLocation();
 		assertTrue(loc.isEmpty());
 

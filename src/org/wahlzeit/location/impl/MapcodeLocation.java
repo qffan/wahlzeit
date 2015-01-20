@@ -2,6 +2,8 @@ package org.wahlzeit.location.impl;
 
 import java.util.List;
 
+import org.wahlzeit.location.LocationException;
+
 import com.mapcode.*;
 
 public class MapcodeLocation extends AbstractLocation {
@@ -12,14 +14,14 @@ public class MapcodeLocation extends AbstractLocation {
 		this.mapcodes = new java.util.ArrayList<Mapcode>();
 	}
 
-	public MapcodeLocation(double latitude, double longitude) {
+	public MapcodeLocation(double latitude, double longitude) throws LocationException {
 		this.setLongitude(longitude);
 		this.setLatitude(latitude);
 		mapcodes = MapcodeCodec.encode(this.getLatitude(), this.getLongitude());
 	}
 
-	public MapcodeLocation(String firstDigital, String secondDigital)
-			throws UnknownMapcodeException {
+	public MapcodeLocation(String firstDigital, String secondDigital) 
+			throws UnknownMapcodeException, LocationException {
 		this.mapcodes = new java.util.ArrayList<Mapcode>();
 		String code = firstDigital + "." + secondDigital;
 		mapcodes.add(new Mapcode(code, null));
@@ -29,7 +31,7 @@ public class MapcodeLocation extends AbstractLocation {
 	}
 
 	public MapcodeLocation(String state, String firstDigital, String secondDigital) throws UnknownMapcodeException,
-			UnknownTerritoryException {
+			UnknownTerritoryException, LocationException {
 		this.mapcodes = new java.util.ArrayList<Mapcode>();
 		final String code = firstDigital + "." + secondDigital;
 		final Territory territory = Territory.fromString(state);
